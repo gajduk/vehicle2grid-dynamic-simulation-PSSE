@@ -6,7 +6,8 @@ Developed in order to study the effects of vehicle-to-grid on the overall stabil
 
 ------------------------
 
-We have used this framework to produce the results for the paper ["Improving power grid transient stability by plug-in electric vehicles"](http://iopscience.iop.org/1367-2630/16/11/115011/article) published in the [New Journal of Physics](http://iopscience.iop.org/1367-2630). The findings published in this paper were also covered by [Phys.org](http://phys.org/) a popular science and technology web-magazine that did a [short story on our work](http://phys.org/news/2014-11-electric-vehicles-stabilize-large-disturbances.html). Currently our focus is on developing even better control strategies for the power grid of the future.
+We have used this framework to produce the results for the paper ["Improving power grid transient stability by plug-in electric vehicles"](http://iopscience.iop.org/1367-2630/16/11/115011/article) published in the [New Journal of Physics](http://iopscience.iop.org/1367-2630).
+Some of the findings from this paper were also covered by [Phys.org](http://phys.org/) a popular science and technology web-magazine that did a [short story on our work](http://phys.org/news/2014-11-electric-vehicles-stabilize-large-disturbances.html). Currently our focus is on developing even better control strategies for the power grid of the future.
 
 -------------------------
 Instalation
