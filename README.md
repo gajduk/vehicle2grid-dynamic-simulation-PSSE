@@ -16,9 +16,9 @@ Instalation
 You must have PSS/E installed and added to the system path. 
 You can download a free copy from the [Siemens website](http://w3.usa.siemens.com/smartgrid/us/en/transmission-grid/products/grid-analysis-tools/transmission-system-planning/Pages/University-Order.aspx). 
 The framework was developed on top of PSS/E version 33, I am not sure how it will behave with other versions.
-The PSS/E installations comes with a python 2.7 installer and is automatically configures during instalation.
-I had a lot of problems when there were more then one python versions installed on Windows.
-Therefore, I strongly suggest that you delete any previous version of Python you might have and software like Anaconda, Canopy, Wing IDE and IPython.
+The PSS/E installations comes with a Python 2.7 installer and is automatically configured during installation.
+I had a lot of problems when there were more then one Python versions installed on Windows.
+Therefore, I strongly suggest that you delete any other version of Python you might have and software like Anaconda, Canopy, Wing IDE and IPython.
 
 Using the framework
 ===================
