@@ -1,4 +1,4 @@
-power-grid-stability-pev
+vehicle2grid-dynamic-simulation-PSSE
 ========================
 
 A Python framework that facilitates running dynamic simulations in PSS/E. 
