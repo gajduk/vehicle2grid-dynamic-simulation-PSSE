@@ -6,18 +6,23 @@ Developed in order to study the effects of vehicle-to-grid on the overall stabil
 
 ------------------------
 
-We have used this framework to produce the results for for the paper ["Improving power grid transient stability by plug-in electric vehicles"](http://iopscience.iop.org/1367-2630/16/11/115011/article) published in the [New Journal of Physics](http://iopscience.iop.org/1367-2630). The findings published in this paper were also covered by [Phys.org](http://phys.org/) a popular science and technology web-magazine that did a [short story on our work](http://phys.org/news/2014-11-electric-vehicles-stabilize-large-disturbances.html). Currently our focus is on developing even better control strategies for the power grid of the future.
+We have used this framework to produce the results for the paper ["Improving power grid transient stability by plug-in electric vehicles"](http://iopscience.iop.org/1367-2630/16/11/115011/article) published in the [New Journal of Physics](http://iopscience.iop.org/1367-2630). The findings published in this paper were also covered by [Phys.org](http://phys.org/) a popular science and technology web-magazine that did a [short story on our work](http://phys.org/news/2014-11-electric-vehicles-stabilize-large-disturbances.html). Currently our focus is on developing even better control strategies for the power grid of the future.
 
 -------------------------
 Instalation
 -------------------------
 
-You must have PSS/E installed and added to the system path. If you don't have it you can download a free version from the [Siemens website](http://w3.usa.siemens.com/smartgrid/us/en/transmission-grid/products/grid-analysis-tools/transmission-system-planning/Pages/University-Order.aspx). The framework was developed on top of PSS/E version 33, I am not sure how it will behave with other versions. The PSS/E installations comes with a python 2.7 installer. PSS/E automatically configures itself and I had a lot of problems when there were more then the python version installed. Therefore, I strongly suggest that you delete any previous version of Python you might have and software like Anaconda, Canopy, Wing IDE and IPython.
+You must have PSS/E installed and added to the system path. 
+You can download a free copy from the [Siemens website](http://w3.usa.siemens.com/smartgrid/us/en/transmission-grid/products/grid-analysis-tools/transmission-system-planning/Pages/University-Order.aspx). 
+The framework was developed on top of PSS/E version 33, I am not sure how it will behave with other versions.
+The PSS/E installations comes with a python 2.7 installer and is automatically configures during instalation.
+I had a lot of problems when there were more then one python versions installed on Windows.
+Therefore, I strongly suggest that you delete any previous version of Python you might have and software like Anaconda, Canopy, Wing IDE and IPython.
 
 Using the framework
 ===================
 
-Running a dynamic simulation & plotting the results
+Running a dynamic simulation and plotting the results
 ---------------------------------------------------
 Create a new file e.g. "my_dynamic_simulation.py" and use the builder syntax to build a Dynamic Simulation object with the desired properties. For example to simulate a bus fault at bus 5 that starts at 1 seconds, lasts for 0.1 seconds on case39 (New England) and monitor the generator speeds and all bus voltages you would write
 
@@ -45,6 +50,7 @@ builder.withPlot()
 builder.build().runSimulation()
 ```
 ---------------------
+
 Comparing the system stability with and without vehicle-to-grid
 ---------------------
 You can reuse most of the code from the previous example to see how the system behaves when vehicle-to-grid is implemented.
@@ -68,6 +74,7 @@ builder.build().runSimulation()
 builder.withControl(control.SimpleLocalControl(5)).build().runSimulation()
 ```
 ----------------------
+
 Calculating the critical clearing time (t_ccl)
 ----------------------
 The framework comes with a utility that uses binary search to find the t_ccl. All you need to do is define the type of disturbance and control and invoke the `determineT_ccl` function like so
