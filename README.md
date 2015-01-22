@@ -115,8 +115,8 @@ t_ccl_par.calculatetccl(all_builders,1,"results_t_ccl.txt")
 
 Some nice plots that I've done with this framework. Just a reminder about the export_to_matlab option which enables you to use Matlab's rich plotting functionality 
 
-![alt tag](https://raw.githubusercontent.com/gajduk/power-grid-stability-pev/master/speed_no_control_red_fluc.jpg)
+![alt tag](https://raw.githubusercontent.com/gajduk/vehicle2grid-dynamic-simulation-PSSE/master/speed_no_control_red_fluc.jpg)
 
-![alt tag](https://raw.githubusercontent.com/gajduk/power-grid-stability-pev/master/speed_control_red_fluc.jpg)
+![alt tag](https://raw.githubusercontent.com/gajduk/vehicle2grid-dynamic-simulation-PSSE/master/speed_control_red_fluc.jpg)
 
 
