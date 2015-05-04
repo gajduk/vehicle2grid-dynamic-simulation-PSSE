@@ -308,9 +308,9 @@ class DynamicSimulationBuilder(object):
             
  
 def main():
-    DynamicSimulationBuilder().withControl(control.SimpleLocalControl(5)).\
-        withRawFile("normal_case39.raw").withDyrFile("normal_case39.dyr").\
-        withDisturbance(disturbances.BranchTrip(2,.5,5,6,'1 ')).build().runSimulation()
+    DynamicSimulationBuilder().withControl(control.SimpleLocalControl(1)).\
+        withRawFile("rts96_reduced_gens.raw").withDyrFile("rts96_reduced_gens.dyr").withExportFigures().\
+        withDisturbance(disturbances.BusFault(2,.01,5)).build().runSimulation()
     
 if __name__ == "__main__":
     main()
