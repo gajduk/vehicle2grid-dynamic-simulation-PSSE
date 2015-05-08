@@ -17,7 +17,7 @@ class ClassicLoad(object):
 class PEV(object):
     """an aggregated bus of PEVs, P is the total real power at that bus"""
         
-    def __init__(self,bus,id,P=0.0):
+    def __init__(self,bus,id,P=0.001):
         self._bus = bus
         self._id = id
         self._P = P
@@ -182,7 +182,10 @@ class PowerSystem(object):
                 for machine_load in self._machine_loads:
                     if machine_load._bus == pev._bus:
                         pev._P += machine_load._P    
-                        
+                for gen in self._generators:
+                    if gen._bus == pev._bus:
+                        if pev._P == 0.001:
+                            pev._P = gen._P
             #skip everything until you get to the branch data 
             while "BEGIN BRANCH DATA" not in line:
                 line = rawf.readline()

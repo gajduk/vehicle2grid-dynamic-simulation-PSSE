@@ -100,7 +100,7 @@ class DynamicSimulation(object):
             
         if self._export_to_matlab:
             description = sufix.replace(" ","_").replace(".","_").replace("=","__")
-            self._channels.exportToMatlab(matlab_dir+"\\"+description+".m",description,True,not self._export_figures,self._export_figures)
+            self._channels.exportToMatlab(matlab_dir+"\\"+description+".m",description,True,True,self._export_figures)
             if self._export_figures:
                 import win32com.client
                 h = win32com.client.Dispatch('matlab.application')
@@ -123,7 +123,6 @@ class DynamicSimulation(object):
             pass
             
         return self._channels
-        
              
     def _simulateANumberofSteps(self,start_time,duration,num_steps,control):
         if num_steps == 0:
@@ -148,12 +147,12 @@ class DynamicSimulation(object):
         extra_fine_grained_min_step_size = .0000001
         #max number of steps during each period
         ns_initial_period = ceil(.05*num_steps)
-        ns_extra_fine_grained_faulted = ceil(.15*num_steps)
-        ns_fine_grained_faulted = ceil(.15*num_steps)
-        ns_normal_faulted = ceil(.15*num_steps)
-        ns_extra_fine_grained_post_fault = ceil(.15*num_steps)
-        ns_fine_grained_post_fault = ceil(.15*num_steps)
-        ns_normal_post_fault = ceil(.2*num_steps)
+        ns_extra_fine_grained_faulted = ceil(.10*num_steps)
+        ns_fine_grained_faulted = ceil(.10*num_steps)
+        ns_normal_faulted = ceil(.10*num_steps)
+        ns_extra_fine_grained_post_fault = ceil(.20*num_steps)
+        ns_fine_grained_post_fault = ceil(.20*num_steps)
+        ns_normal_post_fault = ceil(.25*num_steps)
         #max duration of each phase
         d_extra_fine_grained_faulted = .05*end_time
         d_fine_grained_faulted = .15*end_time
@@ -223,8 +222,7 @@ class DynamicSimulation(object):
         duration_to_simulate = post_fault_duration_left
         number_of_steps = min(ns_normal_faulted,duration_to_simulate/normal_min_step_size)
         current_time = self._simulateANumberofSteps(current_time,duration_to_simulate,number_of_steps,control)
-        
-      
+       
       
 class DynamicSimulationBuilder(object):
     """Used to build a dynamic simulation by specifying only the parameters that matter to you using the withParameter(value) methods.
@@ -296,7 +294,6 @@ class DynamicSimulationBuilder(object):
         self._export_figures = True
         return self
         
-        
     def build(self):
         self._power_system_object = power_system.PowerSystem(self._raw_file,self._dyr_file)
         if self._channel_file == "":
@@ -308,9 +305,13 @@ class DynamicSimulationBuilder(object):
             
  
 def main():
-    DynamicSimulationBuilder().withControl(control.SimpleLocalControl(1)).\
-        withRawFile("rts96_reduced_gens.raw").withDyrFile("rts96_reduced_gens.dyr").withExportFigures().\
-        withDisturbance(disturbances.BusFault(2,.01,5)).build().runSimulation()
+    ds = DynamicSimulationBuilder().withControl(control.NoControl()).withEndTime(30).withNumIterations(20000).\
+        withRawFile("1rts96_reduced_gens.raw").withDyrFile("1rts96.dyr").withExportFigures().\
+        withDisturbance(disturbances.BusFault(2,.1,5)).build()
+        
+    ds.runSimulation()
+    
+    print ds._channels.getTimeOfStabilization(ds._disturbance.getFaultStart()+ds._disturbance.getFaultDuration())
     
 if __name__ == "__main__":
     main()
