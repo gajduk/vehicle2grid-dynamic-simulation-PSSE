@@ -124,7 +124,7 @@ class LoadChange(AbstractDisturbance):
             q = p/(1+p)
             if q > 0:
                 q = -q
-        self.increaseLoadAtBuses(self.__busses,q*100)
+        self._increaseLoadAtBuses(self.__busses,q*100)
         
     def _increaseLoadAtBuses(self,load_buses,percent_change):
         #define the bus subsystem
