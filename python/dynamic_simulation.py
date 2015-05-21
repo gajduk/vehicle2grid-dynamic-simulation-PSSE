@@ -305,9 +305,9 @@ class DynamicSimulationBuilder(object):
             
  
 def main():
-    ds = DynamicSimulationBuilder().withControl(control.NoControl()).withEndTime(30).withNumIterations(20000).\
-        withRawFile("1rts96_reduced_gens.raw").withDyrFile("1rts96.dyr").withExportFigures().\
-        withDisturbance(disturbances.BusFault(2,.1,5)).build()
+    ds = DynamicSimulationBuilder().withControl(control.SimpleLocalControl()).withEndTime(30).withNumIterations(5000).\
+        withRawFile("case39_pevs_everywhere.raw").withDyrFile("normal_case39.dyr").withExportFigures().\
+        withDisturbance(disturbances.BusFault(2,.05,10)).withChannel(channel_utils.CHANNELS.PEV_SPEED).build()
         
     ds.runSimulation()
     

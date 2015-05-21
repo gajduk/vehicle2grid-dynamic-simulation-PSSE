@@ -88,7 +88,7 @@ class PowerSystem(object):
             _machine_loads
             _branches
         Not connected with psspy - in any way, just holds info
-        Assumes that both files are found in directory psse"""           
+        Assumes that both files are found in directory psse"""
     
     def __init__(self,raw_filename, dyr_filename):
         directory = "psse\\"
@@ -185,7 +185,7 @@ class PowerSystem(object):
                 for gen in self._generators:
                     if gen._bus == pev._bus:
                         if pev._P == 0.001:
-                            pev._P = gen._P
+                            pev._P = 0.001#gen._P
             #skip everything until you get to the branch data 
             while "BEGIN BRANCH DATA" not in line:
                 line = rawf.readline()
