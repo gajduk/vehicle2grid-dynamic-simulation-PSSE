@@ -143,8 +143,8 @@ class DynamicSimulation(object):
         
         #min step sizes for differently grained dynamic simulations, if the actual size is smaller then this it is trimmed down to its minimum value
         normal_min_step_size = .001
-        fine_grained_min_step_size = .00001
-        extra_fine_grained_min_step_size = .0000001
+        fine_grained_min_step_size = .0001
+        extra_fine_grained_min_step_size = .00001
         #max number of steps during each period
         ns_initial_period = ceil(.05*num_steps)
         ns_extra_fine_grained_faulted = ceil(.10*num_steps)
@@ -305,9 +305,9 @@ class DynamicSimulationBuilder(object):
             
  
 def main():
-    ds = DynamicSimulationBuilder().withControl(control.SimpleLocalControl()).withEndTime(30).withNumIterations(5000).\
-        withRawFile("case39_pevs_everywhere.raw").withDyrFile("normal_case39.dyr").withExportFigures().\
-        withDisturbance(disturbances.BusFault(2,.05,10)).withChannel(channel_utils.CHANNELS.PEV_SPEED).build()
+    ds = DynamicSimulationBuilder().withControl(control.SimpleLocalControl(1)).withEndTime(30).withNumIterations(10000).\
+        withRawFile("case39_pevs_everywhere.raw").withDyrFile("normal_case39.dyr").withExportToMatlab().\
+        withDisturbance(disturbances.BusFault(2,.115,10)).withChannel(channel_utils.CHANNELS.PEV_SPEED).withChannel(channel_utils.CHANNELS.PEV_POWER).build()
         
     ds.runSimulation()
     

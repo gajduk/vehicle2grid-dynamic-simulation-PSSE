@@ -68,8 +68,8 @@ class SimpleControl(AbstractControl):
         self._control_constant = control_constant
 
     def exhibitControl(self,time):
-        if self._simulation._disturbance._fault_start+self._simulation._disturbance._fault_duration > time-0.1:
-            return
+        #if self._simulation._disturbance._fault_start+self._simulation._disturbance._fault_duration > time-0.1:
+        #    return
         if not self._control_constant == 0:
             average_frequency_deviation = self._simulation._channels.getAverageFrequencyDeviation(time)
             if average_frequency_deviation > .1:
@@ -94,8 +94,8 @@ class SimpleLocalControl(AbstractControl):
         return "SimpleLocalControl h="+str("{0}".format(self._control_constant))+" buses="+(" ".join(str(e) for e in self._buses))
         
     def exhibitControl(self,time):
-        if self._simulation._disturbance._fault_start+self._simulation._disturbance._fault_duration > time-0.1:
-            return
+        #if self._simulation._disturbance._fault_start+self._simulation._disturbance._fault_duration > time-0.1:
+        #    return
         if not self._control_constant == 0:
             total_P = self._getSumP([])
             batery_P = self._getSumP(self._buses)
